@@ -75,7 +75,7 @@ class FireCreature(Creature):
 
 
 if __name__ == "__main__":
-    print("=== Creature Class Tests ===\\n")
+    print("=== Creature Class Tests ===\n")
 
     # Test 1: Initialization
     goblin = Creature("Goblin", 30, 5)
@@ -125,7 +125,7 @@ if __name__ == "__main__":
 
     print("=== Tests Completed ===")
 
-    print("\\n=== FlyingCreature Tests ===")
+    print("\n=== FlyingCreature Tests ===")
     hawk = FlyingCreature("Sky Hawk", 50, 8)
     hawk.fly_to(120)
     dummy = Creature("Practice Dummy", 40, 0)
@@ -133,7 +133,7 @@ if __name__ == "__main__":
     assert hawk.altitude == 120
     assert dummy.hp == 32
 
-    print("\\n=== SwimmingCreature Tests ===")
+    print("\n=== SwimmingCreature Tests ===")
     serpent = SwimmingCreature("Aqua Serpent", 60, 7)
     serpent.dive_to(30)
     dummy = Creature("Practice Dummy", 40, 0)
@@ -141,7 +141,7 @@ if __name__ == "__main__":
     assert serpent.depth == 30
     assert dummy.hp == 33
 
-    print("\\n=== FireCreature Tests ===")
+    print("\n=== FireCreature Tests ===")
     phoenix = FireCreature("Phoenix", 80, 15)
     phoenix.emit_fire(50)
     enemy = Creature("Enemy", 100, 5)
@@ -151,4 +151,4 @@ if __name__ == "__main__":
     phoenix.emit_fire(150)
     assert phoenix.fire_level == 100
 
-    print("\\nAll tests completed successfully!")
+    print("\nAll tests completed successfully!")
