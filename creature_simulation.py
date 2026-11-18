@@ -55,6 +55,25 @@ class SwimmingCreature(Creature):
         print(f"{target.name} HP is now {target.hp}")
 
 
+class FireCreature(Creature):
+    def __init__(self, name, hp, attack_power, fire_level=0):
+        super().__init__(name, hp, attack_power)
+        self.fire_level = max(0, min(100, fire_level))
+
+    def emit_fire(self, new_fire_level):
+        self.fire_level = max(0, min(100, new_fire_level))
+        print(f"{self.name} emits fire at level {self.fire_level}!")
+
+    def attack(self, target):
+        if not self.is_alive():
+            print(f"{self.name} cannot attack because it is defeated.")
+            return
+        damage = self.attack_power + self.fire_level // 10
+        print(f"{self.name} attacks {target.name} with fire for {damage} damage!")
+        target.hp = max(0, target.hp - damage)
+        print(f"{target.name} HP is now {target.hp}")
+
+
 if __name__ == "__main__":
     wolf = Creature("Wolf", 40, 10)
     sheep = Creature("Sheep", 25, 3)
@@ -76,3 +95,14 @@ if __name__ == "__main__":
     serpent.attack(dummy)
     assert serpent.depth == 30
     assert dummy.hp == 33
+
+    print("\n=== FireCreature Tests ===")
+    phoenix = FireCreature("Phoenix", 80, 15)
+    phoenix.emit_fire(50)
+    enemy = Creature("Enemy", 100, 5)
+    phoenix.attack(enemy)
+    assert phoenix.fire_level == 50
+    assert enemy.hp == 80
+    phoenix.emit_fire(150)
+    assert phoenix.fire_level == 100
+    print("FireCreature tests passed!")
